@@ -14,7 +14,7 @@ categories: jekyll update
 
 # INTRODUÇÃO
 
-  Esse post tem o objetivo de apresentar a forma de iniciar o desenvolvimento do jogo snake em C++. Algumas características da linguagem serão utilizadas de forma contextualiza durante a criação do projeto, então o desenvolvimento do jogo busca ajudar, de forma divertida, na consolidação de conceitos, como: funcionalidades de POO (progração orientada à objetos), sintaxe do C++, bibliotecas (para windows) que não são usadas normalmente, manipulação de arquivos e estratégias para formatar um jogo. Segue, abaixo, um exemplo de como ficará o projeto após os três *posts*.
+  Esse *post* tem o objetivo de apresentar a forma de iniciar o desenvolvimento do jogo snake em C++. Algumas características da linguagem serão utilizadas de forma contextualiza durante a criação do projeto, então o desenvolvimento do jogo busca ajudar, de forma divertida, na consolidação de conceitos, como: funcionalidades de POO (progração orientada à objetos), sintaxe do C++, bibliotecas (para windows) que não são usadas normalmente, manipulação de arquivos e estratégias para formatar um jogo. Segue, abaixo, um exemplo de como ficará o projeto após os três *posts*.
   
   ![snake4](http://i350.photobucket.com/albums/q430/pedro048/Snake6_zpsj2wwkyln.png)
 
