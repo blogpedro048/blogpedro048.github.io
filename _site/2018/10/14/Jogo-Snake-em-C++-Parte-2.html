@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+  <title>
+    
+      Jogo Snake em C++ - Inserindo Funcionalidades (movimentação e lógica) &middot; Blog de Pedro Victor
+    
+  </title>
+
+  
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface" />
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
+
+  <!-- Additional head bits without overriding original head -->
+</head>
+
+
+  <body class="post">
+
+    <div id="sidebar">
+  <header>
+    <div class="site-title">
+      <a href="/">
+        
+          <span class="back-arrow icon"><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0h24v24H0z" fill="none"/>
+  <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+</svg></span>
+        
+        Blog de Pedro Victor
+      </a>
+    </div>
+    <p class="lead">Esse é um blog desenvolvido no intuito de divulgar projetos na área da engenharia de computação.</p>
+  </header>
+  <nav id="sidebar-nav-links">
+  
+  
+
+  
+
+  
+
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- Optional additional links to insert in sidebar nav -->
+</nav>
+
+
+  
+
+  <nav id="sidebar-icon-links">
+  
+
+  <a id="subscribe-link"
+     class="icon" title="Subscribe" aria-label="Subscribe"
+     href="/feed.xml">
+    <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <circle cx="6.18" cy="17.82" r="2.18"/>
+    <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/>
+</svg>
+  </a>
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <!-- Optional additional links to insert for icons links -->
+</nav>
+
+  <p>
+  &copy; 2018.
+  <a href="/LICENSE.md">MIT License.</a>
+</p>
+
+</div>
+
+    <main class="container">
+      <header>
+  <h1 class="post-title">Jogo Snake em C++ - Inserindo Funcionalidades (movimentação e lógica)</h1>
+</header>
+<div class="content">
+  <div class="post-meta">
+  <span class="post-date">14 Oct 2018</span>
+  <span class="post-categories">
+    
+      &bull;
+
+      
+      
+      
+
+      
+        jekyll
+      
+    
+      &bull;
+
+      
+      
+      
+
+      
+        update
+      
+    
+  </span>
+</div>
+
+
+  <div class="post-body">
+    
+<h1 id="dando-monvimentação-e-lógica-ao-jogo">Dando monvimentação e lógica ao jogo</h1>
+
+<p>Esse <em>Post</em> tem como objetivo introduzir novas funcionalidades ao jogo snake, sendo elas: a movimentação da cobra por meio do teclado e a criação de uma lógica responsável por dar sentido e estabelecer regras para as ações da personagem.</p>
+
+<p>O método entrada da classe JogoSnake é desenvolvido com base nas funções: kbhit() e getch(), sendo respectivamente responsáveis por identificar se alguma tecla foi pressionada e reconhcer qual é a tecla reconhecida, caso tenha recido alguma informação. Essas duas funções fazem parte da biblioteca conio.h.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kt">void</span> <span class="n">JogoSnake</span><span class="o">::</span><span class="n">entrada</span><span class="p">(){</span> <span class="c1">// metodo responsavel por receber os comandos feitos no teclado</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">()){</span> <span class="c1">// verifica se alguma tecla foi acionada</span>
+        <span class="k">switch</span><span class="p">(</span><span class="n">getch</span><span class="p">()){</span> <span class="c1">// identifica qual tecla foi acionada</span>
+        <span class="k">case</span> <span class="sc">'a'</span><span class="p">:</span> <span class="c1">// a tecla a direciona a cobra para a esquerda</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tdireita</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>    <span class="cm">/*
+                                   caso esteja se movimentando para a direita continua mesmo
+                                   se o usuario pretender movimentar para a esquerda
+                                   */</span>
+                <span class="n">pos</span><span class="o">=</span><span class="n">direita</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>                <span class="c1">// caso nao esteja se movendo para a direita atende o comando e se move para a esquerda</span>
+                <span class="n">pos</span><span class="o">=</span><span class="n">esquerda</span><span class="p">;</span>
+                <span class="n">tesquer</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tcima</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>      <span class="c1">// se estava se movendo para cima para de se mover nessa posicao</span>
+                <span class="n">tcima</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tbaixo</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>     <span class="c1">// se estava se movendo para baixo para de se mover nessa posicao</span>
+                <span class="n">tbaixo</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">'d'</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tesquer</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>      <span class="cm">/*
+                                   caso esteja se movimentando para a esquerda continua mesmo
+                                   se o usuario pretender movimentar para a direita
+                                   */</span>
+               <span class="n">pos</span><span class="o">=</span><span class="n">esquerda</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>                  <span class="c1">// caso nao esteja se movendo para a esquerda atende o comando e se move para a direita</span>
+                <span class="n">pos</span><span class="o">=</span><span class="n">direita</span><span class="p">;</span>
+                <span class="n">tdireita</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tcima</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>        <span class="c1">// se estava se movendo para cima para de se mover nessa posicao</span>
+                <span class="n">tcima</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tbaixo</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>       <span class="c1">// se estava se movendo para baixo para de se mover nessa posicao</span>
+                <span class="n">tbaixo</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">'w'</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tesquer</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>       <span class="c1">// se estava se movendo para a esquerda para de se mover nessa posicao</span>
+                <span class="n">tesquer</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tdireita</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>      <span class="c1">// se estava se movendo para a direita para de se mover nessa posicao</span>
+                <span class="n">tdireita</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tbaixo</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>      <span class="cm">/*
+                                   caso esteja se movimentando para baixo continua mesmo
+                                   se o usuario pretender movimentar para cima
+                                   */</span>
+
+                <span class="n">pos</span><span class="o">=</span><span class="n">baixo</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>                 <span class="c1">// caso nao esteja se movendo para baixo atende o comando e se move para cima</span>
+                <span class="n">pos</span><span class="o">=</span><span class="n">cima</span><span class="p">;</span>
+                <span class="n">tcima</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">'s'</span><span class="p">:</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tesquer</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>      <span class="c1">// se estava se movendo para a esquerda para de se mover nessa posicao</span>
+                <span class="n">tesquer</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tdireita</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>     <span class="c1">// se estava se movendo para a direita para de se mover nessa posicao</span>
+                <span class="n">tdireita</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">tcima</span><span class="o">==</span><span class="nb">true</span><span class="p">){</span>        <span class="cm">/*
+                                   caso esteja se movimentando para cima continua mesmo
+                                   se o usuario pretender movimentar para baixo
+                                   */</span>
+                <span class="n">pos</span><span class="o">=</span><span class="n">cima</span><span class="p">;</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>                 <span class="c1">// caso nao esteja se movendo para cima atende o comando e se move para baixo</span>
+                <span class="n">pos</span><span class="o">=</span><span class="n">baixo</span><span class="p">;</span>
+                <span class="n">tbaixo</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">'f'</span><span class="p">:</span>                   <span class="c1">// finaliza a partida</span>
+            <span class="n">perdeu</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="sc">'p'</span><span class="p">:</span>                   <span class="c1">// paralisa o jogo</span>
+            <span class="n">system</span><span class="p">(</span><span class="s">"pause"</span><span class="p">);</span>
+            <span class="n">Sleep</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>A lógica do jogo é construida para ser possível fazer a formação da cauda, movimentação (direita, esquerda, para cima, para baixo), atravessar as paredes (laterais, superiores e inferiores), derrota quando a cabeça toca a cauda e incrementar a pontuação quando a cobra comer a fruta normal ou a fruta extra.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">JogoSnake</span><span class="o">::</span><span class="n">logica</span><span class="p">(){</span> <span class="c1">// metodo responsavel pela formação da cauda</span>
+
+    <span class="kt">int</span> <span class="n">guardar1X</span><span class="p">,</span> <span class="n">guardar1Y</span><span class="p">,</span> <span class="n">guardar2X</span><span class="p">,</span> <span class="n">guardar2Y</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">contarCauda</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span> <span class="c1">// analise do 1 fragmento da cauda</span>
+            <span class="n">guardar1X</span><span class="o">=</span><span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="c1">// guarda a posicao em x do 1 fragmento da cauda</span>
+            <span class="n">guardar1Y</span><span class="o">=</span><span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="c1">// guarda a posicao em y do 1 fragmento da cauda</span>
+            <span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>         <span class="c1">// o 1 fragmento da cauda recebe a posicao em x da cabeca da cobra</span>
+            <span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">y</span><span class="p">;</span>         <span class="c1">// o 1 fragmento da cauda recebe a posicao em y da cabeca da cobra</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="n">guardar2X</span><span class="o">=</span><span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="c1">// guarda a posicao em x de qualquer fragmento da cauda que nao seja o 1</span>
+            <span class="n">guardar2Y</span><span class="o">=</span><span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="c1">// guarda a posicao em y de qualquer fragmento da cauda que nao seja o 1</span>
+            <span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">guardar1X</span><span class="p">;</span> <span class="cm">/* qualquer fragmento da cauda que nao seja o 1 recebe a posicao em x
+                                          do fragmento anterior
+                                        */</span>
+            <span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">guardar1Y</span><span class="p">;</span>  <span class="cm">/* qualquer fragmento da cauda que nao seja o 1 recebe a posicao em y
+                                          do fragmento anterior
+                                        */</span>
+            <span class="n">guardar1X</span><span class="o">=</span><span class="n">guardar2X</span><span class="p">;</span>        <span class="cm">/* a posicao em x do fragmento em analise e guardada para ser recebida pelo
+                                           fragmento posterior
+                                        */</span>
+            <span class="n">guardar1Y</span><span class="o">=</span><span class="n">guardar2Y</span><span class="p">;</span>        <span class="cm">/* a posicao em y do fragmento em analise e guardada para ser recebida pelo
+                                           fragmento posterior
+                                        */</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">switch</span><span class="p">(</span><span class="n">pos</span><span class="p">){</span>
+    <span class="k">case</span> <span class="n">esquerda</span><span class="p">:</span> <span class="c1">// para a cobra se mover para a esquerda e preciso decrementar os valores da linha</span>
+        <span class="n">x</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">direita</span><span class="p">:</span>  <span class="c1">// para a cobra se mover para a direita e preciso incrementar os valores da linha</span>
+        <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">cima</span><span class="p">:</span>     <span class="c1">// para a cobra se mover para cima e preciso decrementar os valores da coluna</span>
+        <span class="n">y</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">baixo</span><span class="p">:</span>    <span class="c1">// para a cobra se mover para baixo e preciso incrementar os valores da coluna</span>
+        <span class="n">y</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="c1">// atravessa as paredes laterais</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="n">largura</span><span class="o">-</span><span class="mi">1</span><span class="p">){</span> <span class="cm">/* Se a coordenada em x da cabeca da cobra chegar ao fim de
+                         uma linha da matriz esse sua coordenada retornara para o
+                         inicio da linha
+                      */</span>
+        <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">){</span>     <span class="cm">/* Se a coordenada em x da cabeca da cobra for menor que
+                         a primeira posicao de uma linha da matriz esse sua coordenada
+                         ira para o fim da linha
+                      */</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">largura</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="c1">// atravessa as paredes de cima e de baixo</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">){</span>           <span class="cm">/* Se a coordenada em y da cabeca da cobra for quase menor
+                         ou igual a primeira posicao de uma coluna da matriz essa coor
+                         denada ira para a ultima posicao da coluna
+                        */</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">altura</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">y</span><span class="o">&gt;=</span><span class="n">altura</span><span class="p">){</span> <span class="cm">/* Se a coordenada em y da cabeca da cobra chegar ao fim da
+                            coluna da matriz essa coordenada ira para o inicio da co
+                            luna
+                        */</span>
+        <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="c1">// se a cabeca da cobra tocar o corpo o jogador sera derrotado</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">contarCauda</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">y</span><span class="p">){</span>
+            <span class="n">Beep</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">//(frequencia, duracao) produz um som depois que a cobra tocar nela mesma</span>
+            <span class="n">perdeu</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="c1">// quando a cobra come a fruta</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="n">frutaX</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="o">==</span><span class="n">frutaY</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">tempo</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>           <span class="c1">// a cobra comeu uma fruta quando nao tinha fruta extra no campo</span>
+            <span class="n">Beep</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">250</span><span class="p">);</span>    <span class="c1">//(frequencia, duracao) produz um som depois que a cobra comer uma fruta</span>
+            <span class="n">pontos</span><span class="o">+=</span><span class="mi">10</span><span class="p">;</span>         <span class="c1">// incrementa a pontuacao, porque a cobra comeu a fruta</span>
+
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>                  <span class="c1">// como a variavel tempo nao esta em 0 a cobra comeu uma fruta quando a fruta extra esta no campo</span>
+            <span class="n">Beep</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">250</span><span class="p">);</span>
+            <span class="n">auxPontos</span><span class="o">+=</span><span class="mi">10</span><span class="p">;</span>      <span class="c1">// acumula a pontuacao referente as frutas normais enquanto a fruta extra ainda esta no campo</span>
+        <span class="p">}</span>
+        <span class="n">contarCauda</span><span class="o">++</span><span class="p">;</span>          <span class="c1">// cada vez que a cobra come uma fruta a sua cauda cresce</span>
+        <span class="n">outraPos1</span><span class="o">:</span>
+        <span class="n">frutaX</span><span class="o">=</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="p">(</span><span class="n">largura</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// gera uma nova fruta com coordenadas x e y aleatorias</span>
+        <span class="n">frutaY</span><span class="o">=</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="p">(</span><span class="n">altura</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">contarCauda</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">frutaX</span> <span class="o">&amp;&amp;</span> <span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">frutaY</span><span class="p">)</span>
+                <span class="k">goto</span> <span class="n">outraPos1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">acabouFextra</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>           <span class="c1">// o tempo da fruta extra ainda nao terminou</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pontos</span><span class="o">!=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">pontos</span><span class="o">%</span><span class="mi">50</span><span class="o">==</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">tempo</span><span class="o">&lt;=</span><span class="mi">50</span> <span class="o">&amp;&amp;</span> <span class="n">acabouFextra</span><span class="o">==</span><span class="nb">false</span><span class="p">){</span> <span class="c1">// verifica as condicoes para ter fruta extra no campo</span>
+         <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">contarCauda</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">extraX</span> <span class="o">&amp;&amp;</span> <span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">extraY</span><span class="p">){</span>
+                   <span class="n">gerarFrutaExtra</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="n">extraX</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="o">==</span><span class="n">extraY</span><span class="p">){</span> <span class="c1">// verifica se a cobra comeu uma fruta extra</span>
+            <span class="n">Beep</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">250</span><span class="p">);</span>
+            <span class="n">pontos</span><span class="o">+=</span><span class="mi">20</span><span class="p">;</span>             <span class="c1">// recebe uma pontucao maior que o normal</span>
+            <span class="n">contarCauda</span><span class="o">++</span><span class="p">;</span>          <span class="c1">// incrementa a cauda</span>
+            <span class="n">tempo</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>                <span class="c1">// zera o tempo da fruta extra, porque ela deve desaparecer tendo em vista que a cobra ja comeu</span>
+            <span class="n">outraPos2</span><span class="o">:</span>
+            <span class="n">extraX</span><span class="o">=</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="p">(</span><span class="n">largura</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>  <span class="c1">// gera uma posicao aleatoria para a nova fruta extra, mas ela so aparecera quando os criterios forem cumpridos</span>
+            <span class="n">extraY</span><span class="o">=</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="p">(</span><span class="n">altura</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">contarCauda</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">caudax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">extraX</span> <span class="o">&amp;&amp;</span> <span class="n">cauday</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">extraY</span><span class="p">){</span>
+                    <span class="k">goto</span> <span class="n">outraPos2</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">tempo</span><span class="o">&gt;</span><span class="mi">50</span><span class="p">){</span> <span class="c1">// o tempo da fruta extra estourou, porque vai ate 50</span>
+        <span class="n">tempo</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>  <span class="c1">// zera a variavel tempo</span>
+        <span class="n">pontos</span><span class="o">+=</span><span class="n">auxPontos</span><span class="p">;</span> <span class="cm">/*a variavel pontos recebe a pontuacao das frutas normais comidas durando o tempo em que a fruta extra
+                            estava no campo
+                            */</span>
+        <span class="n">auxPontos</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">acabouFextra</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>  <span class="c1">// o tempo da fruta extra estar em jogo acabou</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Clicando na imagem abaixo ficará disponível um vídeo com a demonstração das implementação feitas.</p>
+
+<p><a href="https://www.youtube.com/watch?v=QZ23wBr076o"><img src="http://i350.photobucket.com/albums/q430/pedro048/Snake4_zpsuvmrkdg8.png" alt="Demostração das implementações" /></a></p>
+
+
+    
+
+
+
+<div class="post-tags">
+  
+</div>
+  </div>
+
+  
+  <section class="comments">
+    <h2>Comments</h2>
+    
+  <p>
+    You are seeing this because your Disqus shortname is not properly set. To
+    configure Disqus, you should edit your <code>_config.yml</code> to include
+    either a <code>disqus.shortname</code> variable.
+  </p>
+
+  <p>
+    If you do not wish to use Disqus, override the
+    <code>comments.html</code> partial for this theme.
+  </p>
+
+
+  </section>
+
+  <section class="related">
+  <h2>Related Posts</h2>
+  <ul class="posts-list">
+    
+      <li>
+        <h3>
+          <a href="/2018/08/21/Jogo-Snake-em-C++-Parte-1">
+            Jogo Snake em C++ - Implementações Iniciais
+            <small>21 Aug 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</section>
+
+
+   
+      <div id="disqus_thread"></div>
+      <script>
+
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://blogpedro048-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            
+  
+
+</div>
+
+    </main>
+
+    <!-- Optional footer content -->
+
+  </body>
+</html>
