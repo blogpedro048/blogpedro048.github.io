@@ -108,7 +108,7 @@ No jogo Snake a movimentação da cobra não pode mudar para a direção contrá
 }
 ```
 
-A lógica do jogo é construida para ser possível fazer a formação da cauda, movimentação (direita, esquerda, para cima, para baixo), atravessar as paredes (laterais, superiores e inferiores), derrota quando a cabeça toca a cauda e incrementar a pontuação quando a cobra comer a fruta normal ou a fruta extra.
+A lógica do jogo é construida para ser possível fazer a formação da cauda, movimentação (direita, esquerda, para cima, para baixo), atravessar as paredes (laterais, superiores e inferiores), derrota quando a cabeça toca a cauda e incrementa a pontuação quando a cobra comer a fruta normal ou a fruta extra.
 
  ```cpp
 void JogoSnake::logica(){ // metodo responsavel pela formação da cauda
