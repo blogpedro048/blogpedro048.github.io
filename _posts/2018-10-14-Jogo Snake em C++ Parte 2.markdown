@@ -18,7 +18,7 @@ Esse *Post* tem como objetivo introduzir novas funcionalidades ao jogo snake, se
 
 O método entrada da classe JogoSnake é desenvolvido com base nas funções: kbhit() e getch(), sendo respectivamente responsáveis por identificar se alguma tecla foi pressionada e reconhcer qual é a tecla reconhecida, caso tenha recido alguma informação. Essas duas funções fazem parte da biblioteca conio.h.
 
-No jogo Snake a movimentação da cobra não pode mudar para a direção contrária, ou seja, se tiver indo para cima não pode mudar para baixo e se tiver caminhando para a direção é proibido ir para a esquerda, e o coontrário também não pode. As teclas p e f funcionam respectivamente para paralisar e finalizar o jogo.
+No jogo Snake a movimentação da cobra não pode mudar para a direção contrária, ou seja, se tiver indo para cima não pode mudar para baixo e se tiver caminhando para a direita é proibido ir para a esquerda, e o contrário também não pode. As teclas p e f funcionam respectivamente para paralisar e finalizar o jogo.
 
  ```cpp
  void JogoSnake::entrada(){ // metodo responsavel por receber os comandos feitos no teclado
