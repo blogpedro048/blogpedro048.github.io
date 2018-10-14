@@ -238,7 +238,7 @@ void JogoSnake::logica(){ // metodo responsavel pela formação da cauda
 
 Clicando na imagem abaixo ficará disponível um vídeo com a demonstração das implementação feitas.
 
-[![Demostração das implementações](http://i350.photobucket.com/albums/q430/pedro048/Snake4_zpsuvmrkdg8.png)](https://www.youtube.com/watch?v=QZ23wBr076o)
+[![Demostração das implementações](http://i350.photobucket.com/albums/q430/pedro048/IMG_20181014_151323_127_zpsmfggjnfh.jpg)](https://www.youtube.com/watch?v=QZ23wBr076o)
 
 
 
