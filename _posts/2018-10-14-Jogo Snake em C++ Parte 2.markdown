@@ -20,16 +20,16 @@ O método entrada da classe JogoSnake é desenvolvido com base nas funções: kb
 
 No jogo Snake a movimentação da cobra não pode mudar para a direção contrária, ou seja, se tiver indo para cima não pode mudar para baixo e se tiver caminhando para a direita é proibido ir para a esquerda, e o contrário também não pode. As teclas p e f funcionam respectivamente para paralisar e finalizar o jogo.
 
-![clique aqui](https://beta-static.photobucket.com/images/q430/pedro048/0/7308071a-8511-40ad-901c-7c439e2f70f2-original.png?width=1920&height=1080&fit=bounds)
+![entrada](https://beta-static.photobucket.com/images/q430/pedro048/0/7308071a-8511-40ad-901c-7c439e2f70f2-original.png?width=1920&height=1080&fit=bounds)
 
-*Link* para o código do método entrada: [entrada](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/entrada.h)
+*Link* para o código do método entrada: [clique aqui](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/entrada.h)
 
 
 A lógica do jogo é construida para ser possível fazer a formação da cauda, movimentação (direita, esquerda, para cima, para baixo), atravessar as paredes (laterais, superiores e inferiores), derrota quando a cabeça toca a cauda e incrementa a pontuação quando a cobra comer a fruta normal ou a fruta extra.
 
-![clique aqui](https://beta-static.photobucket.com/images/q430/pedro048/0/143b5651-fdf7-4e9b-9005-46fd777f09ab-original.png?width=1920&height=1080&fit=bounds)
+![logica](https://beta-static.photobucket.com/images/q430/pedro048/0/143b5651-fdf7-4e9b-9005-46fd777f09ab-original.png?width=1920&height=1080&fit=bounds)
 
-*Link* para o código do método lógica: [logica](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/logica.h)
+*Link* para o código do método lógica: [clique aqui](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/logica.h)
 
 
 Clicando na imagem abaixo ficará disponível um vídeo com a demonstração das implementação feitas.
