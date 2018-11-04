@@ -23,6 +23,7 @@ twitter_username: jekyllrb
 github_username:  pedro048
 
 # Build settings
+google_analytics: UA-128631675-1
 markdown: kramdown
 theme: minima
 plugins:
