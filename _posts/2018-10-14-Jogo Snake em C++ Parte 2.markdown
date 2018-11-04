@@ -20,6 +20,8 @@ O método entrada da classe JogoSnake é desenvolvido com base nas funções: kb
 
 No jogo Snake a movimentação da cobra não pode mudar para a direção contrária, ou seja, se tiver indo para cima não pode mudar para baixo e se tiver caminhando para a direita é proibido ir para a esquerda, e o contrário também não pode. As teclas p e f funcionam respectivamente para paralisar e finalizar o jogo.
 
+![entrada](https://beta-static.photobucket.com/images/q430/pedro048/0/7308071a-8511-40ad-901c-7c439e2f70f2-original.png?width=1920&height=1080&fit=bounds)
+
  ```cpp
  void JogoSnake::entrada(){ // metodo responsavel por receber os comandos feitos no teclado
 
