@@ -121,7 +121,7 @@ O sistema de *rank* do jogo *Snake* foi implementado como um método que salva a
 ![rank](https://beta-static.photobucket.com/images/q430/pedro048/0/e6021bd9-2db0-4e16-9e02-fd2af9b721df-original.png?width=1920&height=1080&fit=bounds)
 
 
-*Link* para o código do método rank: [clique aqui](https://github.com/pedro048/Projetos-emC-/blob/master/Jogo%20Snake%20em%20C++/rank.h)
+*Link* para o código do método rank: [clique aqui](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/rank.h)
 
 [clique aqui para ter acesso ao executável do jogo Snake](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/snake3.exe)
 
