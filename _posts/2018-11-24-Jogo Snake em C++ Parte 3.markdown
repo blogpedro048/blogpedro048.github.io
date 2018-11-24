@@ -114,7 +114,9 @@ Informação de *Game Over*:
                 perdeu=false;
             }
 ``` 
-Um som de *beep* pode ser associado a ação da cobra comer uma fruta, isso no método responsável pela lógica, por meio da função *Beep(frequência, duração)* da biblioteca *windows.h*. 
+Um som de *beep* pode ser associado a ação da cobra comer uma fruta, isso no método responsável pela lógica, por meio da função *Beep(frequência, duração)* da biblioteca *windows.h*.
+
+
 
 
 
