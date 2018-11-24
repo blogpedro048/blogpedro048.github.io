@@ -90,7 +90,7 @@ Escolha do nível de dificuldade:
 ``` 
 Informação de Game Over:
 
-'''cpp
+```cpp
  while(perdeu==false){ // enquanto o usuario nao perdeu o jogo continua
             desenho();
             entrada();
@@ -113,7 +113,7 @@ Informação de Game Over:
                 }
                 perdeu=false;
             }
-'''
+``` 
 
 
 
