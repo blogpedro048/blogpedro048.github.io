@@ -2,7 +2,7 @@
 layout: post
 comments: true
 title:  "Jogo Snake em C++ - Implementações Finais"
-date:   2018-10-14 11:09:00 -0200
+date:   2018-11-24 11:09:00 -0200
 categories: jekyll update
 ---
 
