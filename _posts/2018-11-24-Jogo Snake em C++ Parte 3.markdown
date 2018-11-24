@@ -118,6 +118,15 @@ Um som de *beep* pode ser associado a ação da cobra comer uma fruta, isso no m
 
 O sistema de *rank* do jogo *Snake* foi implementado como um método que salva as informações (o nome de 3 jogadores) em um arquivo .txt que fica armazenado na mesma pasta do projeto. Para iniciar o *rank* é necessário colocar a biblioteca *iostream* para pode manipular arquivos em C++. O histório dos maiores pontuadores é estabelecido com três posições (1º, 2º e 3º), sendo necessário inserir o nome quando a pontuação supera alguma pontuaçao do *rank*. Fluxograma do sistema de *rankeamento*: 
 
+![rank](https://beta.photobucket.com/u/pedro048/a/878e3dbc-7cc4-4019-a5e8-345c70464db8/p/e6021bd9-2db0-4e16-9e02-fd2af9b721df)
+
+
+*Link* para o código do método rank: [clique aqui](https://github.com/pedro048/Projetos-emC-/blob/master/Jogo%20Snake%20em%20C++/rank.h)
+
+[clique aqui para ter acesso ao executável do jogo Snake](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/snake3.exe)
+
+
+
 
 
 
