@@ -11,7 +11,7 @@ categories: jekyll update
 [jekyll-talk]: https://talk.jekyllrb.com/
 
  
-# Inserindo funcioladidades finais (menu inicial e rank dos jogadores)
+## Inserindo funcioladidades finais (menu inicial e rank dos jogadores)
 
 
 
