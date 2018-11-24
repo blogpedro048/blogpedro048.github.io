@@ -13,12 +13,20 @@ categories: jekyll update
  
 ## Inserindo funcioladidades finais (menu inicial e rank dos jogadores)
 
+Nesse *post* serão abordados aspectos complementares do jogo, ou seja, já é possível usar o projeto com as funcionalidades implementadas até agora, vamos apenas deixar mais configurável e interativo. A cor do jogo pode ser alterado por meio da função system() da biblioteca stdlib.h, isso é feito pela seguinte relação:
 
+Parâmetro      Cor
+da função      associada
+system()
 
-
- 
-
-
+"color 09"  =>   Azul
+"color A"   =>   Verde
+"color C"   =>   Vermelho
+"color E"   =>   Amarelo
+"color F"   =>   Branco
+"color 08"  =>   Cinza
+"color D"   =>   Lilas
+"color B"   =>   Verde-agua
 
 
 
