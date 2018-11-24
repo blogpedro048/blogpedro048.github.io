@@ -116,6 +116,8 @@ Informação de *Game Over*:
 ``` 
 Um som de *beep* pode ser associado a ação da cobra comer uma fruta, isso no método responsável pela lógica, por meio da função *Beep(frequência, duração)* da biblioteca *windows.h*.
 
+O sistema de *rank* do jogo *Snake* foi implementado como um método que salva as informações (o nome de 3 jogadores) em um arquivo .txt que fica armazenado na mesma pasta do projeto. Para iniciar o *rank* é necessário colocar a biblioteca *iostream* para pode manipular arquivos em C++. O histório dos maiores pontuadores é estabelecido com três posições (1º, 2º e 3º), sendo necessário inserir o nome quando a pontuação supera alguma pontuaçao do *rank*. Fluxograma do sistema de *rankeamento*: 
+
 
 
 
