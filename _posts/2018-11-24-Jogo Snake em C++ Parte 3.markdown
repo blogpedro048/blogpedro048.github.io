@@ -13,7 +13,7 @@ categories: jekyll update
  
 ## Inserindo funcioladidades finais (menu inicial e rank dos jogadores)
 
-Nesse *post* serão abordados aspectos complementares do jogo, ou seja, já é possível usar o projeto com as funcionalidades implementadas até agora, vamos apenas deixar mais configurável e interativo. A cor do jogo pode ser alterado por meio da função system() da biblioteca stdlib.h, isso é feito pela seguinte relação:
+Nesse *post* serão abordados aspectos complementares do jogo, ou seja, já é possível usar o projeto com as funcionalidades implementadas até agora, vamos apenas deixar mais configurável e interativo. A cor do jogo pode ser alterada por meio da função system() da biblioteca stdlib.h, isso é feito pela seguinte relação:
 
 Parâmetro da função system() => Cor associada
 
@@ -25,6 +25,29 @@ Parâmetro da função system() => Cor associada
 "color 08"  =>   Cinza
 "color D"   =>   Lilas
 "color B"   =>   Verde-agua
+
+Existem três níveis de dificuldes diferenciados pela velocidade que o jogo acontece. A função sleep() da biblioteca windows.h é reponsável pelo atraso na execução do programa, podendo ser aplicada da seguinte froma:
+
+```cpp
+   switch(nivel){
+            case 1:
+                Sleep(500); // atraso de 1/2 segundo
+                break;
+            case 2:
+                Sleep(250); // atraso de 1/4 de segundo
+                break;
+            case 3:
+                Sleep(75);  // atraso muito pequeno
+                break;
+            default:
+                 system("cls");
+                 cout<<"Esse nivel nao e valido!"<<endl;
+                 cout<<"Escolha novamente"<<endl;
+                 cout<<endl;
+                 goto volta;
+            }
+        }
+``` 
 
 
 
