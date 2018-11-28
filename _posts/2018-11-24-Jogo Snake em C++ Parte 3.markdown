@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title:  "Jogo Snake em C++ - Implementações Finais"
+title:  "Jogo Snake em C++ - Resultados e implementações finais"
 date:   2018-11-24 11:09:00 -0200
 categories: jekyll update
 ---
@@ -122,6 +122,10 @@ O sistema de *rank* do jogo *Snake* foi implementado como um método que salva a
 
 
 *Link* para o código do método rank: [clique aqui](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/rank.h)
+
+## Resultado
+
+
 
 [clique aqui para ter acesso ao executável do jogo Snake](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/snake3.exe)
 
