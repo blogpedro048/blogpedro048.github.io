@@ -125,7 +125,9 @@ O sistema de *rank* do jogo *Snake* foi implementado como um método que salva a
 
 ## Resultado
 
+Clicando na imagem abaixo ficará disponível um vídeo do jogo Snake com todas as funcionalidades apresentadas nos *posts*.
 
+[![Resultado do Projeto](http://i350.photobucket.com/albums/q430/pedro048/IMG_20181014_151323_127_zpsrlpuexfi.jpg)](https://www.youtube.com/watch?v=Q5GoZOooUr8&feature=youtu.be)
 
 [clique aqui para ter acesso ao executável do jogo Snake](https://github.com/pedro048/Projetos-em-C-/blob/master/Jogo%20Snake%20em%20C%2B%2B/snake3.exe)
 
